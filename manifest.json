@@ -1,6 +1,10 @@
 {
   "name": "Aria2c Integration",
   "version": "1.7.0",
+  "developer": {
+    "name": "jc3213",
+    "url": "https://github.com/jc3213/firefox-aria2-integration"
+  },
   "manifest_version": 2,
   "minimum_chrome_version": "31",
   "description": "Download files with aria2",
@@ -14,7 +18,16 @@
     "scripts": [ "lib/store.js", "main.js" ],
     "persistent": false
   },
-  "options_page": "settings.html",
+  "options_ui": {
+    "page": "settings.html",
+	"open_in_tab": true
+  },
+  "applications": {
+    "gecko": {
+      "id": "firefox@integration.aria2",
+      "strict_min_version": "42.0"
+    }
+  },
   "permissions": [
     "contextMenus",
     "activeTab",
@@ -23,24 +36,24 @@
     "notifications",
     "storage",
     "cookies",
-    "*://*/"
+    "*://*/*"
   ],
   "browser_action": {
-   "default_icon": {
-    "19": "icons/icon19.png"
+    "default_icon": {
+      "19": "icons/icon19.png"
   },
-   "default_popup": "popup.html" 
+    "default_popup": "popup.html" 
  },
   "content_scripts": [
     {
       "matches": [
         "http://*/*",
-	"https://*/*"
+		"https://*/*"
       ],
       "js": [
         "inject.js"
       ]
     }
   ],
-"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

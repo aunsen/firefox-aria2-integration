@@ -185,7 +185,7 @@ function captureAdd(Item, taburl) {
 }
 
 
-chrome.downloads.onDeterminingFilename.addListener(function (Item, s) {
+chrome.downloads.onCreated.addListener(function (Item, s) {
     "use strict";
     //console.log(Item);
     if (settings.get('captureCheckbox')) {
